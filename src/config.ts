@@ -20,7 +20,7 @@ const EnvSchema = z.object({
   MINT_FACTORY_ADDRESS: z.string().optional().or(z.literal("")),
 
   X402_PAY_TO_ADDRESS: z.string().min(1),
-  X402_NETWORK: z.string().min(1).default("base-sepolia"),
+  X402_NETWORK: z.string().min(1).default("base"),
   X402_PRICE_USD: z.coerce.number().positive().default(0.01),
   X402_FACILITATOR_URL: z.string().optional().or(z.literal("")),
 
