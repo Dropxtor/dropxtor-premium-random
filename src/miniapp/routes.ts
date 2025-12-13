@@ -150,7 +150,7 @@ export function createMiniappRouter(): Router {
     <div class="wrap">
       <div class="card">
         <div class="pill"><span class="kv">seed</span> <code>${escapeHtml(seed)}</code> <span class="kv">network</span> <code>base</code></div>
-        <h1 class="glitch" data-text="PREMIUM RANDOM">PREMIUM RANDOM</h1>
+        <h1 class="glitch" data-text="PREMIUM RANDOM by dropxtor">PREMIUM RANDOM by dropxtor</h1>
         <div class="row">
           <p class="muted">
             🔐🛡️ Endpoint protected by <strong>x402</strong> (HTTP 402) 🧬 Matrix - glitch for Vercel deployment 🖥️.
@@ -183,4 +183,5 @@ function escapeHtml(s: string): string {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
+
 
