@@ -1,0 +1,27 @@
+{
+  "name": "farcaster-random-frame-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "node scripts/compile-contracts.cjs && tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@coinbase/cdp-sdk": "^1.40.0",
+    "@neynar/nodejs-sdk": "^2.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "viem": "^2.21.0",
+    "x402-express": "^0.6.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.1",
+    "solc": "^0.8.21",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
