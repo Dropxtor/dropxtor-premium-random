@@ -2,7 +2,12 @@ import { z } from "zod";
 import dotenv from "dotenv";
 
 dotenv.config();
-
+const AddressSchema = z.string().refine(
+  (v): v is `0x${string}` => /^0x[a-fA-F0-9]{40}$/.test(v),
+const AddressSchema = z.custom<`0x${string}`>(
+  (v) => typeof v === "string" && /^0x[a-fA-F0-9]{40}$/.test(v),
+  { message: "Expected an EVM address like 0x + 40 hex chars" }
+);
 const EnvSchema = z.object({
   NEYNAR_API_KEY: z.string().min(1),
   PUBLIC_BASE_URL: z.string().url().default("http://localhost:3000"),
@@ -39,3 +44,4 @@ export function getEnv(): Env {
   // NEYNAR_API_KEY is required to validate Frame actions properly.
   return EnvSchema.parse(process.env);
 }
+
