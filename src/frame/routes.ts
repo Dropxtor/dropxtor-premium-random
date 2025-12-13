@@ -161,7 +161,7 @@ export function createFrameRouter(): Router {
     tokenUri.searchParams.set("seed", seed);
 
     if (env.MINT_MODE === "create2") {
-      if (MINT_ONCE_721_BYTECODE === "0x") {
+      if (!MINT_ONCE_721_BYTECODE || MINT_ONCE_721_BYTECODE.length <= 2) {
         res.status(500).json({
           error: "MintOnce721 bytecode missing",
           hint: "Run npm run build (it runs scripts/compile-contracts.cjs)"
@@ -270,3 +270,4 @@ export function createFrameRouter(): Router {
 
   return r;
 }
+
