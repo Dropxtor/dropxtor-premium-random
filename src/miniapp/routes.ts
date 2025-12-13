@@ -153,17 +153,17 @@ export function createMiniappRouter(): Router {
         <h1 class="glitch" data-text="PREMIUM RANDOM">PREMIUM RANDOM</h1>
         <div class="row">
           <p class="muted">
-            Endpoint protégé par <strong>x402</strong> (HTTP 402). Style Matrix/glitch pour le déploiement Vercel.
+            🔐🛡️ Endpoint protected by <strong>x402</strong> (HTTP 402) 🧬 Matrix - glitch for Vercel deployment 🖥️.
           </p>
           <ol class="muted">
-            <li>Appelle <code>/api/premium-random</code> sans header <code>X-PAYMENT</code> → 402 + requirements.</li>
-            <li>Paye via un client x402 (ex: <code>x402-fetch</code>) puis re-tente → 200 OK.</li>
+            <li>Call <code>/api/premium-random</code> sans header <code>X-PAYMENT</code> → 402 + requirements.</li>
+            <li>Pay via client x402 (ex: <code>x402-fetch</code>) puis re-tente → 200 OK.</li>
           </ol>
           <a class="btn" href="${escapeHtml(new URL(`/api/premium-random?seed=${encodeURIComponent(seed)}`, baseUrl).toString())}">
             <span>→</span><span>OPEN /api/premium-random</span>
           </a>
           <div class="footer">
-            Note: les Frames ne gèrent pas nativement le paiement x402, donc la monétisation passe par la miniapp.
+            📝⚠️ Note: Frames do not natively support x402 payments, so monetization is handled via the mini-app instead.
           </div>
         </div>
       </div>
@@ -183,3 +183,4 @@ function escapeHtml(s: string): string {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
+
