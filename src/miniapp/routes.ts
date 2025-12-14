@@ -159,7 +159,7 @@ export function createMiniappRouter(): Router {
             <li>Call <code>/api/premium-random</code> sans header <code>X-PAYMENT</code> → 402 + requirements.</li>
             <li>Pay via client x402 (ex: <code>x402-fetch</code>) puis re-tente → 200 OK.</li>
           </ol>
-          <a class="btn" href="${escapeHtml(new URL(`dropxtor-premium-random.vercel.app/api/premium-random?seed=${encodeURIComponent(seed)}`, baseUrl).toString())}">
+          <a class="btn" href="${escapeHtml(new URL(`/api/premium-random?seed=${encodeURIComponent(seed)}`, baseUrl).toString())}">
             <span>→</span><span>OPEN /api/premium-random</span>
           </a>
           <div class="footer">
@@ -183,6 +183,7 @@ function escapeHtml(s: string): string {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
+
 
 
 
