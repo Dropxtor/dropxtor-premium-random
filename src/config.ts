@@ -10,7 +10,7 @@ const AddressSchema = z.custom<`0x${string}`>(
 
 const EnvSchema = z.object({
   NEYNAR_API_KEY: z.string().min(1),
-  PUBLIC_BASE_URL: z.string().url().default("http://localhost:3000"),
+  PUBLIC_BASE_URL: z.string().url().default("https://dropxtor-premium-random.vercel.app"),
   PORT: z.coerce.number().int().positive().default(3000),
 
   // Base (mainnet)
@@ -45,3 +45,4 @@ export function getEnv(): Env {
   // NEYNAR_API_KEY is required to validate Frame actions properly.
   return EnvSchema.parse(process.env);
 }
+
