@@ -15,8 +15,7 @@ export function createX402Middleware(): RequestHandler {
   };
 
   // Some deployments may want to set a custom facilitator.
-  // x402-express supports options; we pass only when configured.
-  const facilitator = env.X402_FACILITATOR_URL && env.X402_FACILITATOR_URL.length > 0 ? env.X402_FACILITATOR_URL : undefined;
-
-  return paymentMiddleware(env.X402_PAY_TO_ADDRESS, config, facilitator ? { facilitator } : undefined);
+  // NOTE: keep the middleware call minimal for compatibility with x402-express typings.
+  // If you need a custom facilitator later, wire it here against the exact x402-express version you're using.
+  return paymentMiddleware(env.X402_PAY_TO_ADDRESS, config);
 }
