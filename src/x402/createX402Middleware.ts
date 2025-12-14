@@ -6,7 +6,7 @@ export function createX402Middleware(): RequestHandler {
   const env = getEnv();
 
   // The coinbase/x402 README shows:
-  //   paymentMiddleware("0xYourAddress", { "/your-endpoint": "$0.01" })
+  //   paymentMiddleware("0xYourAddress", { "/your-endpoint": "$0.03" })
   // We keep pricing configurable.
   const price = `$${env.X402_PRICE_USD}`;
 
@@ -14,8 +14,8 @@ export function createX402Middleware(): RequestHandler {
     "/api/premium-random": price
   };
 
-  // Some deployments may want to set a custom facilitator.
   // NOTE: keep the middleware call minimal for compatibility with x402-express typings.
-  // If you need a custom facilitator later, wire it here against the exact x402-express version you're using.
+  // If you need a custom facilitator later, we can re-add it with the right option shape
+  // for your exact x402-express version.
   return paymentMiddleware(env.X402_PAY_TO_ADDRESS, config);
 }
