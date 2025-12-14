@@ -2,12 +2,12 @@ import { z } from "zod";
 import dotenv from "dotenv";
 
 dotenv.config();
-const AddressSchema = z.string().refine(
-  (v): v is `0x${string}` => /^0x[a-fA-F0-9]{40}$/.test(v),
+
 const AddressSchema = z.custom<`0x${string}`>(
   (v) => typeof v === "string" && /^0x[a-fA-F0-9]{40}$/.test(v),
   { message: "Expected an EVM address like 0x + 40 hex chars" }
 );
+
 const EnvSchema = z.object({
   NEYNAR_API_KEY: z.string().min(1),
   PUBLIC_BASE_URL: z.string().url().default("http://localhost:3000"),
@@ -24,7 +24,8 @@ const EnvSchema = z.object({
   MINT_CONTRACT_ADDRESS: z.string().optional().or(z.literal("")),
   MINT_FACTORY_ADDRESS: z.string().optional().or(z.literal("")),
 
-  X402_PAY_TO_ADDRESS: z.string().min(1),
+  // x402
+  X402_PAY_TO_ADDRESS: AddressSchema,
   X402_NETWORK: z.string().min(1).default("base"),
   X402_PRICE_USD: z.coerce.number().positive().default(0.01),
   X402_FACILITATOR_URL: z.string().optional().or(z.literal("")),
@@ -44,4 +45,3 @@ export function getEnv(): Env {
   // NEYNAR_API_KEY is required to validate Frame actions properly.
   return EnvSchema.parse(process.env);
 }
-
